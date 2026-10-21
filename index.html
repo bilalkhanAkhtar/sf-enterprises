@@ -1,0 +1,379 @@
+<title>SF Enterprises</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;700&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: Mumbai kaali-peeli (black and yellow). Black header, full-bleed yellow hero with a drawn laptop and warranty stamp, striped divider, sticker-style cards with taxi-meter prices, black testing band, yellow sell-back block. */
+:root {
+  --yellow: #ffc20e;
+  --black: #111111;
+  --bg: #f2f2ee;
+  --surface: #ffffff;
+  --ink: #111111;
+  --muted: #5a5a55;
+  --line: #d9d9d2;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
+  --mono: "Share Tech Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #141414; --surface: #1f1f1f; --ink: #f3f3ef; --muted: #a9a9a3; --line: #343432; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #141414; --surface: #1f1f1f; --ink: #f3f3ef; --muted: #a9a9a3; --line: #343432; color-scheme: dark; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { width: 100%; max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+.mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); padding: 0 4px; margin: 0 -4px; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--yellow); color: #111;
+  font: 700 0.98rem var(--body); padding: 12px 20px; border-radius: 999px; text-decoration: none; border: 2px solid var(--ink); cursor: pointer;
+  transition: transform .12s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn.dark { background: #111; color: #fff; border-color: #111; }
+.btn.line { background: transparent; color: #111; border-color: #111; }
+.btn.sm { padding: 8px 16px; font-size: 0.9rem; }
+
+/* header */
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: #111; color: #fff; }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-family: var(--display); font-weight: 800; font-size: 1.1rem; }
+.logo i { font-style: normal; background: var(--yellow); color: #111; border-radius: 8px; padding: 3px 9px; letter-spacing: -0.02em; }
+header nav { display: flex; align-items: center; gap: 20px; }
+header nav a:not(.btn) { color: #fff; text-decoration: none; font-weight: 500; font-size: 0.95rem; opacity: .85; }
+@media (max-width: 600px) { header nav a:not(.btn) { display: none; } }
+
+/* hero */
+.hero { background: var(--yellow); color: #111; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px; align-items: center; padding-block: 44px 40px; }
+@media (max-width: 800px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 32px 28px; } }
+.hero .txt { min-width: 0; }
+.pill { display: inline-block; font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; background: #111; color: var(--yellow); padding: 5px 12px; border-radius: 999px; }
+.hero h1 { font-size: clamp(2.5rem, 8.2vw, 4.7rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.035em; margin: 16px 0 14px; }
+.hero p { font-size: 1.12rem; max-width: 44ch; margin: 0 0 22px; font-weight: 500; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero svg { width: 100%; max-width: 460px; height: auto; justify-self: center; display: block; }
+.stripe { height: 14px; background: repeating-linear-gradient(-45deg, #111 0 14px, var(--yellow) 14px 28px); }
+
+/* trust tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 16px; padding-block: 36px 8px; }
+.tile { background: var(--surface); border: 2px solid var(--ink); border-radius: 14px; padding: 16px 18px; box-shadow: 5px 5px 0 var(--ink); min-width: 0; }
+.tile b { display: block; font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; }
+.tile span { color: var(--muted); font-size: 0.93rem; }
+
+section { padding-block: 40px; }
+section h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+.sub { color: var(--muted); max-width: 58ch; margin: 10px 0 0; }
+
+/* filters */
+.fgroup { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; }
+.fgroup > span { font-family: var(--mono); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.06em; color: var(--muted); min-width: 64px; }
+.chip { font: 700 0.9rem var(--body); padding: 7px 15px; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--yellow); color: #111; }
+.count { font-family: var(--mono); color: var(--muted); margin-top: 14px; }
+
+/* cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 22px; margin-top: 12px; }
+.card { background: var(--surface); border: 2px solid var(--ink); border-radius: 16px; box-shadow: 6px 6px 0 var(--ink); display: flex; flex-direction: column; overflow: hidden; min-width: 0; transition: transform .15s ease, box-shadow .15s ease; }
+.card:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
+.art { position: relative; background: var(--tint); display: grid; place-items: center; padding: 22px 0 14px; border-bottom: 2px solid var(--ink); }
+.art svg { width: 62%; max-width: 200px; height: auto; display: block; }
+.art img { width: 100%; height: 190px; object-fit: cover; display: block; margin: -22px 0 -14px; }
+.grade { position: absolute; top: 12px; right: 12px; background: #111; color: var(--yellow); font-family: var(--mono); font-size: 0.82rem; padding: 3px 10px; border-radius: 6px; transform: rotate(4deg); letter-spacing: 0.04em; }
+.body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card h3 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; }
+.cpu { font-family: var(--mono); font-size: 0.95rem; color: var(--muted); margin: -4px 0 0; }
+.specs { display: flex; flex-wrap: wrap; gap: 6px; }
+.specs span { font-size: 0.82rem; font-weight: 500; border: 1.5px solid var(--line); border-radius: 6px; padding: 3px 9px; }
+.buyrow { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 10px; }
+.meter { background: #111; border-radius: 8px; padding: 6px 12px 7px; border: 2px solid #111; }
+.meter small { display: block; font-family: var(--mono); font-size: 0.68rem; color: #9a9a92; letter-spacing: 0.1em; }
+.meter b { font-family: var(--mono); font-weight: 400; font-size: 1.6rem; line-height: 1.1; color: var(--yellow); text-shadow: 0 0 8px rgba(255,194,14,.45); font-variant-numeric: tabular-nums; }
+.note { margin-top: 26px; padding: 12px 16px; border-radius: 10px; border: 2px dashed var(--ink); font-size: 0.9rem; color: var(--muted); }
+.empty { grid-column: 1 / -1; padding: 34px; text-align: center; border: 2px dashed var(--ink); border-radius: 14px; }
+
+/* testing band */
+.testing { background: #111; color: #fff; }
+.testing h2 { color: #fff; }
+.testing .sub { color: #b9b9b2; }
+.checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 10px 32px; margin: 24px 0 0; padding: 0; list-style: none; }
+.checks li { padding: 12px 0 12px 38px; border-bottom: 1px solid #333; position: relative; }
+.checks li::before { content: "✓"; position: absolute; left: 0; top: 10px; width: 26px; height: 26px; border-radius: 50%; background: var(--yellow); color: #111; font-weight: 800; display: grid; place-items: center; font-size: 0.9rem; }
+
+/* sell */
+.sell { background: var(--yellow); color: #111; }
+.sell .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; align-items: center; padding-block: 44px; }
+.sell h2 { font-size: clamp(1.9rem, 5.5vw, 3rem); }
+.sell p { font-weight: 500; max-width: 44ch; margin: 10px 0 0; }
+.sell .big { justify-self: start; }
+
+/* faq */
+details { background: var(--surface); border: 2px solid var(--ink); border-radius: 12px; padding: 14px 18px; margin-top: 12px; }
+details summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+details summary::after { content: "+"; font-family: var(--mono); font-size: 1.3rem; line-height: 1; }
+details[open] summary::after { content: "–"; }
+details p { margin: 10px 0 0; color: var(--muted); max-width: 62ch; }
+
+footer { background: #111; color: #cfcfc8; padding-block: 34px 44px; font-size: 0.93rem; }
+footer .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 22px; }
+footer b { color: #fff; display: block; margin-bottom: 4px; }
+.ph { font-family: var(--mono); background: var(--yellow); color: #111; padding: 1px 8px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { .btn, .card { transition: none; } .btn:hover, .card:hover { transform: none; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top"><i>SF</i> Enterprises</a>
+    <nav>
+      <a href="#laptops">Laptops</a>
+      <a href="#testing">Testing</a>
+      <a href="#sell">Sell yours</a>
+      <a class="btn sm" id="waHead" href="#" target="_blank" rel="noopener">WhatsApp us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="txt">
+        <span class="pill">Mumbai · Refurbished</span>
+        <h1>Laptops that mean business.</h1>
+        <p>Core i5, 8 GB RAM and an SSD. Every laptop is tested, cleaned and covered by a 6-month warranty. Walk in, try it, take it home.</p>
+        <div class="cta">
+          <a class="btn dark" href="#laptops">See what is in stock</a>
+          <a class="btn line" id="waHero" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+      </div>
+      <svg viewBox="0 0 440 320" role="img" aria-label="Illustration of a laptop showing i5 processor, 8 GB RAM, SSD and a tested tick">
+        <ellipse cx="220" cy="292" rx="190" ry="14" fill="#111" opacity=".18"/>
+        <rect x="68" y="30" width="304" height="200" rx="14" fill="#111"/>
+        <rect x="80" y="42" width="280" height="176" rx="6" fill="#1b2631"/>
+        <circle cx="94" cy="56" r="4" fill="#ff5f56"/><circle cx="108" cy="56" r="4" fill="#ffbd2e"/><circle cx="122" cy="56" r="4" fill="#27c93f"/>
+        <g font-family="Share Tech Mono, monospace" font-size="17" fill="#d6e2ea">
+          <text x="98" y="94" fill="#ffc20e">SF ENTERPRISES</text>
+          <text x="98" y="128">CPU      Core i5</text>
+          <text x="98" y="152">RAM      8 GB</text>
+          <text x="98" y="176">STORAGE  SSD</text>
+          <text x="98" y="204" fill="#27c93f">BATTERY  OK  ✓ TESTED</text>
+        </g>
+        <path d="M30 230h380l-22 26a12 12 0 0 1-9 4H61a12 12 0 0 1-9-4z" fill="#2b2b2b"/>
+        <rect x="186" y="230" width="68" height="8" rx="4" fill="#111"/>
+        <g transform="translate(366 52) rotate(-12)">
+          <circle r="54" fill="#111"/>
+          <circle r="47" fill="none" stroke="#ffc20e" stroke-width="2" stroke-dasharray="3 4"/>
+          <text y="-8" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="30" fill="#ffc20e">6</text>
+          <text y="10" text-anchor="middle" font-family="Share Tech Mono, monospace" font-size="12" fill="#fff">MONTH</text>
+          <text y="25" text-anchor="middle" font-family="Share Tech Mono, monospace" font-size="12" fill="#fff">WARRANTY</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="stripe" aria-hidden="true"></div>
+
+  <div class="wrap tiles">
+    <div class="tile"><b>9-point test</b><span>Battery, SSD, RAM, screen, keyboard and more.</span></div>
+    <div class="tile"><b>6 months</b><span>Warranty on hardware faults.</span></div>
+    <div class="tile"><b>GST bill</b><span>With serial number and warranty dates.</span></div>
+    <div class="tile"><b>Upgrade ready</b><span>16 GB RAM on most models.</span></div>
+  </div>
+
+  <section id="laptops">
+    <div class="wrap">
+      <h2>In stock <span class="mark">right now</span></h2>
+      <p class="sub">Every laptop here is Core i5 with 8 GB RAM. Prices are in rupees and include Windows, charger and a laptop bag.</p>
+      <div class="fgroup" id="gBrand"><span>Brand</span></div>
+      <div class="fgroup" id="gPrice"><span>Budget</span></div>
+      <div class="count" id="count" aria-live="polite"></div>
+      <div class="grid" id="grid"></div>
+      
+    </div>
+  </section>
+
+  <section id="testing" class="testing">
+    <div class="wrap">
+      <h2>Nothing hits the shelf until it <span class="mark" style="color:#111">passes</span></h2>
+      <p class="sub">The checks we run on every laptop.</p>
+      <ul class="checks">
+        <li>Battery health read and shown on the listing</li>
+        <li>SSD health and speed test</li>
+        <li>Full RAM test</li>
+        <li>Screen checked for dead pixels and patches</li>
+        <li>Every key and the trackpad</li>
+        <li>Wi-Fi, Bluetooth and USB ports</li>
+        <li>Webcam, microphone and speakers</li>
+        <li>Fresh Windows, drivers updated</li>
+        <li>Deep clean, thermal paste on older units</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="sell" class="sell" style="padding-block:0">
+    <div class="wrap">
+      <div>
+        <h2>Old laptop gathering dust?</h2>
+        <p>Send the brand, model and a few photos on WhatsApp. We quote the same day and pay on the spot at the shop. You can also exchange it against any laptop in stock.</p>
+      </div>
+      <a class="btn dark big" id="waSell" href="#" target="_blank" rel="noopener">Get a price on WhatsApp</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Questions people <span class="mark">ask</span></h2>
+      <details><summary>What does the warranty cover?</summary><p>Hardware faults such as motherboard, RAM, SSD, screen and keyboard for 6 months from the day you buy. Physical damage and liquid spills are not covered. Final terms are written on your bill.</p></details>
+      <details><summary>Can I see the laptop before I pay?</summary><p>Yes. Visit the shop, switch it on and try it. You can also ask for a video of the exact laptop on WhatsApp.</p></details>
+      <details><summary>Can the RAM or storage be upgraded?</summary><p>Most models allow an upgrade to 16 GB RAM or a larger SSD. Ask us for the price when you enquire.</p></details>
+      <details><summary>Do you deliver outside Mumbai?</summary><p>Delivery across India can be arranged for an extra charge. Ask on WhatsApp for the cost to your pin code.</p></details>
+      <details><summary>Will I get a bill?</summary><p>Yes, a proper GST bill with the serial number and warranty dates.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div><b>SF Enterprises</b>Refurbished laptops, Mumbai.</div>
+    <div><b>Shop address</b><span class="ph" id="fAddress">Shop address</span></div>
+    <div><b>Phone / WhatsApp</b><span class="ph" id="fPhone">Phone</span></div>
+    <div><b>Hours</b><span class="ph" id="fHours">Hours</span></div>
+  </div>
+</footer>
+
+<script>
+/* ===== SETTINGS: change these when you have the real details ===== */
+var CONFIG = {
+  sheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRNbCrokYmO5ymt725x7Lg_iK606R86a0p8rdm7H9J7dcVBZEidvWb2wPxlrdJcQ199HuUMh8JBh-7x/pub?gid=638318318&single=true&output=csv",
+  whatsapp: "910000000000",              /* digits only, country code first. Dummy until you have the real one. */
+  phoneDisplay: "+91 00000 00000",
+  address: "Shop no. 0, Sample Building, Sample Road, Mumbai 400000",
+  hours: "Mon–Sat, 11 am – 8 pm",
+  photoFolder: "images/"                  /* photos go in this folder, named as in the sheet's photo column */
+};
+/* ================================================================= */
+
+/* Shown only if the sheet cannot be loaded and nothing is saved from an earlier visit. */
+var SAMPLE = [
+  { id: "d5490", brand: "Dell", model: "Latitude 5490", cpu: "Core i5-8350U", ram: "8 GB", storage: "256 GB SSD", screen: '14" FHD', battery: "85%", grade: "A", price: 24500, photo: "", status: "available", stock: 1 },
+  { id: "h840g5", brand: "HP", model: "EliteBook 840 G5", cpu: "Core i5-8250U", ram: "8 GB", storage: "256 GB SSD", screen: '14" FHD', battery: "82%", grade: "A", price: 25500, photo: "", status: "available", stock: 1 },
+  { id: "l480", brand: "Lenovo", model: "ThinkPad T480", cpu: "Core i5-8350U", ram: "8 GB", storage: "256 GB SSD", screen: '14" FHD', battery: "88%", grade: "A", price: 28500, photo: "", status: "available", stock: 1 }
+];
+var TINT = { Dell: ["#cfe3ff", "#2f6fed"], HP: ["#cdeee3", "#0f9d7a"], Lenovo: ["#ffd5cf", "#d92d20"] };
+var PRICES = [["Any", 0], ["Under ₹20k", 20000], ["Under ₹25k", 25000], ["Under ₹30k", 30000]];
+var state = { brand: "", max: 0 };
+var LAPTOPS = [];
+
+function inr(n) { try { return "₹" + n.toLocaleString("en-IN"); } catch (e) { return "₹" + n; } }
+function wa(text) { return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(text); }
+function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+
+/* CSV parser that handles quoted cells, commas and line breaks inside quotes */
+function parseCSV(text) {
+  var rows = [], row = [], cell = "", q = false, i, c;
+  text = text.replace(/^﻿/, "");
+  for (i = 0; i < text.length; i++) {
+    c = text[i];
+    if (q) {
+      if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else { q = false; } } else { cell += c; }
+    } else if (c === '"') { q = true; }
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; row.push(cell); rows.push(row); row = []; cell = ""; }
+    else { cell += c; }
+  }
+  if (cell !== "" || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
+function fromCSV(text) {
+  var rows = parseCSV(text).filter(function (r) { return r.some(function (x) { return String(x).trim() !== ""; }); });
+  if (rows.length < 2) return [];
+  var head = rows[0].map(function (h) { return String(h).trim().toLowerCase(); });
+  return rows.slice(1).map(function (r) {
+    var o = {};
+    head.forEach(function (h, i) { o[h] = (r[i] == null ? "" : String(r[i]).trim()); });
+    o.price = parseInt(String(o.price).replace(/[^0-9]/g, ""), 10) || 0;
+    o.stock = o.stock === "" ? 1 : (parseInt(o.stock, 10) || 0);
+    return o;
+  }).filter(function (o) {
+    return o.model && o.price > 0 && String(o.status || "available").toLowerCase() === "available" && o.stock > 0;
+  });
+}
+
+var grid = document.getElementById("grid"), countEl = document.getElementById("count");
+var gBrand = document.getElementById("gBrand"), gPrice = document.getElementById("gPrice");
+
+function makeChips(host, items, key) {
+  items.forEach(function (it) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = it[0];
+    b.setAttribute("aria-pressed", String(state[key] === it[1]));
+    b.addEventListener("click", function () {
+      state[key] = it[1];
+      Array.prototype.forEach.call(host.querySelectorAll(".chip"), function (c) { c.setAttribute("aria-pressed", String(c === b)); });
+      render();
+    });
+    host.appendChild(b);
+  });
+}
+function buildFilters() {
+  gBrand.innerHTML = "<span>Brand</span>";
+  var brands = LAPTOPS.map(function (l) { return l.brand; }).filter(function (b, i, a) { return b && a.indexOf(b) === i; });
+  if (brands.indexOf(state.brand) < 0) state.brand = "";
+  makeChips(gBrand, [["All", ""]].concat(brands.map(function (b) { return [b, b]; })), "brand");
+}
+makeChips(gPrice, PRICES, "max");
+
+function art(brand) {
+  var c = TINT[brand] || ["#ffe9a8", "#b8860b"];
+  return '<svg viewBox="0 0 120 84" aria-hidden="true"><rect x="22" y="6" width="76" height="52" rx="5" fill="#111"/><rect x="27" y="11" width="66" height="42" rx="2" fill="' + c[1] + '"/><rect x="33" y="18" width="30" height="4" rx="2" fill="#fff" opacity=".85"/><rect x="33" y="27" width="46" height="3" rx="1.5" fill="#fff" opacity=".5"/><rect x="33" y="34" width="38" height="3" rx="1.5" fill="#fff" opacity=".5"/><path d="M8 62h104l-7 9a4 4 0 0 1-3 1.5H18a4 4 0 0 1-3-1.5z" fill="#111"/><rect x="50" y="62" width="20" height="3" rx="1.5" fill="#444"/></svg>';
+}
+function batteryText(b) { if (!b) return ""; return /battery/i.test(b) ? b : "Battery " + b; }
+
+function render() {
+  var list = LAPTOPS.filter(function (l) { return (!state.brand || l.brand === state.brand) && (!state.max || l.price <= state.max); })
+    .sort(function (x, y) { return x.price - y.price; });
+  countEl.textContent = list.length + (list.length === 1 ? " laptop" : " laptops") + " available";
+  if (!list.length) { grid.innerHTML = '<div class="empty">No laptop matches these filters. Message us, new stock comes in every week.</div>'; return; }
+  grid.innerHTML = list.map(function (l, idx) {
+    var name = (l.brand ? l.brand + " " : "") + l.model;
+    var tint = (TINT[l.brand] || ["#ffe9a8"])[0];
+    var msg = "Hi SF Enterprises, I am interested in the " + name + " (" + [l.cpu, l.ram, l.storage].filter(Boolean).join(", ") + ") listed at " + inr(l.price) + ". Is it available?";
+    var pic = l.photo ? '<img src="' + esc(CONFIG.photoFolder + l.photo) + '" alt="' + esc(name) + '" loading="lazy" data-idx="' + idx + '">' : art(l.brand);
+    var specs = [l.ram, l.storage, l.screen, batteryText(l.battery)].filter(Boolean).map(function (s) { return "<span>" + esc(s) + "</span>"; }).join("");
+    return '<article class="card"><div class="art" style="--tint:' + tint + '">' + pic + (l.grade ? '<span class="grade">GRADE ' + esc(l.grade) + '</span>' : "") + '</div>' +
+      '<div class="body"><h3>' + esc(name) + '</h3><p class="cpu">' + esc(l.cpu) + '</p>' +
+      '<div class="specs">' + specs + '</div>' +
+      '<div class="buyrow"><div class="meter"><small>PRICE</small><b>' + inr(l.price) + '</b></div>' +
+      '<a class="btn sm" target="_blank" rel="noopener" href="' + wa(msg) + '">Enquire</a></div></div></article>';
+  }).join("");
+  /* if a photo file is missing, fall back to the drawn laptop */
+  Array.prototype.forEach.call(grid.querySelectorAll(".art img"), function (im) {
+    im.addEventListener("error", function () { var h = im.parentNode; var l = list[parseInt(im.getAttribute("data-idx"), 10)]; im.outerHTML = art(l ? l.brand : ""); }, { once: true });
+  });
+}
+function setLaptops(list) { LAPTOPS = list; buildFilters(); render(); }
+
+/* load: show the last saved list at once, then refresh from the sheet */
+var KEY = "sf-stock-v1", saved = null;
+try { saved = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+setLaptops(saved && saved.length ? saved : SAMPLE);
+if (CONFIG.sheetCsvUrl) {
+  fetch(CONFIG.sheetCsvUrl, { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+    .then(function (t) {
+      var list = fromCSV(t);
+      try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+      setLaptops(list);
+    })
+    .catch(function () { /* keep what is already shown */ });
+}
+
+/* fill the shop details everywhere */
+document.getElementById("waHead").href = wa("Hi SF Enterprises, I would like to know more about your laptops.");
+document.getElementById("waHero").href = wa("Hi SF Enterprises, I am looking for an i5 8 GB laptop. What do you have in stock?");
+document.getElementById("waSell").href = wa("Hi SF Enterprises, I want to sell my old laptop. Brand and model: ");
+document.getElementById("fAddress").textContent = CONFIG.address;
+document.getElementById("fPhone").textContent = CONFIG.phoneDisplay;
+document.getElementById("fHours").textContent = CONFIG.hours;
+</script>
